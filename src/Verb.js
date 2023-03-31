@@ -15,6 +15,11 @@ function Verb({verb}) {
         <b>person: </b>
         <span>{verb.person}</span>
       </div>
+
+      <div>
+        <b>complete: </b>
+        <span>{verb.complete}</span>
+      </div>
     </div>
   )
 }
