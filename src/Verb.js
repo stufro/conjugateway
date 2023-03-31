@@ -1,4 +1,8 @@
 function Verb({verb}) {
+  if(verb === undefined) {
+    return null
+  }
+
   return (
     <div>
       <div>
@@ -14,11 +18,6 @@ function Verb({verb}) {
       <div>
         <b>person: </b>
         <span>{verb.person}</span>
-      </div>
-
-      <div>
-        <b>complete: </b>
-        <span>{verb.complete}</span>
       </div>
     </div>
   )
