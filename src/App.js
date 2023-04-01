@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Verb from './components/Verb'
+import AnswerBox from './components/AnswerBox';
 
 function App() {
   let data = [
@@ -24,23 +25,28 @@ function App() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setAnswer("")
       setAnswerSubmitted(false)
 
       const nextVerb = verbs[0]
       setCurrentVerb(nextVerb)
     }, 1000)
+
+    return () => clearTimeout(timer);
   }, [verbs])
 
   const handleKeyDown = (event) => { if (event.key === 'Enter') handleGuess() }
   const handleInputChange = (event) => { setAnswer(event.target.value); }
 
   const gameStatus = () => {
-    if(!currentVerb) return "Game Over!"
-    if(answerSubmitted && (answer === currentVerb.answer)) return "Correct!"
-    if(answerSubmitted && (answer !== currentVerb.answer)) return "Incorrect!"
+    if (!currentVerb) return "Game Over!"
+    if (answerSubmitted && (answer === currentVerb.answer)) return "Correct!"
+    if (answerSubmitted && (answer !== currentVerb.answer)) return "Incorrect!"
+    return `${verbs.length} verbs remaining`
   }
+
+  const playAgain = () => { setVerbs(data) }
 
   return (
     <div className="App">
@@ -50,9 +56,10 @@ function App() {
 
         <Verb verb={currentVerb} />
 
-        <div>
-          <input placeholder="answer" id="answer" value={answer} onChange={handleInputChange} onKeyDown={handleKeyDown} />
-        </div>
+        {currentVerb ?
+          <AnswerBox answer={answer} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
+          <button onClick={playAgain}>Play Again</button>
+        }
       </header>
     </div>
   );
