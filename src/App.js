@@ -10,16 +10,12 @@ function App() {
 
   const [verbs, setVerbs] = useState(data)
   const [currentVerb, setCurrentVerb] = useState(data[0])
-  const [status, setStatus] = useState()
   const [answer, setAnswer] = useState("")
   const [answers, setAnswers] = useState([])
+  const [answerSubmitted, setAnswerSubmitted] = useState(false)
 
   const handleGuess = () => {
-    if (answer === currentVerb.answer) {
-      setStatus("Correct!")
-    } else {
-      setStatus("Incorrect")
-    }
+    setAnswerSubmitted(true)
     setAnswers([...answer, { infinitive: currentVerb.infinitive, correctAnswer: currentVerb.answer, givenAnswer: answer, correct: answer === currentVerb.answer }])
 
     setVerbs(verbs.filter((verb) => {
@@ -29,25 +25,28 @@ function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      setStatus()
       setAnswer("")
+      setAnswerSubmitted(false)
 
       const nextVerb = verbs[0]
       setCurrentVerb(nextVerb)
-      if(!nextVerb) {
-        setStatus("Game Over!")
-      }
     }, 1000)
   }, [verbs])
 
   const handleKeyDown = (event) => { if (event.key === 'Enter') handleGuess() }
   const handleInputChange = (event) => { setAnswer(event.target.value); }
 
+  const gameStatus = () => {
+    if(!currentVerb) return "Game Over!"
+    if(answerSubmitted && (answer === currentVerb.answer)) return "Correct!"
+    if(answerSubmitted && (answer !== currentVerb.answer)) return "Incorrect!"
+  }
+
   return (
     <div className="App">
       <header className="App-header">
 
-        <h1>{status}</h1>
+        <h1>{gameStatus()}</h1>
 
         <Verb verb={currentVerb} />
 
