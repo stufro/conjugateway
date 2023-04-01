@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import Verb from './Verb'
+import Verb from './components/Verb'
 
 function App() {
   let data = [
