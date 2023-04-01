@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Verb from './components/Verb'
 import AnswerBox from './components/AnswerBox';
+import PostGameReport from './components/PostGameReport';
 
 function App() {
   let data = [
@@ -17,7 +18,7 @@ function App() {
 
   const handleGuess = () => {
     setAnswerSubmitted(true)
-    setAnswers([...answer, { infinitive: currentVerb.infinitive, correctAnswer: currentVerb.answer, givenAnswer: answer, correct: answer === currentVerb.answer }])
+    setAnswers([...answers, { ...currentVerb, givenAnswer: answer, correct: answer === currentVerb.answer }])
 
     setVerbs(verbs.filter((verb) => {
       return verb.id !== currentVerb.id
@@ -58,7 +59,7 @@ function App() {
 
         {currentVerb ?
           <AnswerBox answer={answer} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
-          <button onClick={playAgain}>Play Again</button>
+          <PostGameReport playAgain={playAgain} answers={answers} />
         }
       </header>
     </div>
