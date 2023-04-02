@@ -5,6 +5,7 @@ import Verb from './components/Verb'
 import AnswerBox from './components/AnswerBox';
 import PostGameReport from './components/PostGameReport';
 import Header from './components/Header';
+import ProgressBar from "@ramonak/react-progress-bar";
 
 function App() {
   let data = [
@@ -21,7 +22,7 @@ function App() {
   const handleGuess = () => {
     setAnswerSubmitted(true)
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
-    setCurrentVerb({...currentVerb, correctAnswerGiven: input === currentVerb.answer})
+    setCurrentVerb({ ...currentVerb, correctAnswerGiven: input === currentVerb.answer })
 
     setVerbs(verbs.filter((verb) => {
       return verb.id !== currentVerb.id
@@ -45,9 +46,6 @@ function App() {
 
   const gameStatus = () => {
     if (!currentVerb) return "Game Over!"
-    if (answerSubmitted && (input === currentVerb.answer)) return "Correct!"
-    if (answerSubmitted && (input !== currentVerb.answer)) return "Incorrect!"
-    return `${verbs.length} verbs remaining`
   }
 
   const playAgain = () => {
@@ -60,6 +58,9 @@ function App() {
       <Header />
 
       <h1>{gameStatus()}</h1>
+      <div style={{ width: "50%", marginBottom: "2em" }}>
+        <ProgressBar completed={answers.length} maxCompleted={data.length} customLabel={`${answers.length}/${data.length}`} />
+      </div>
 
       <Verb verb={currentVerb} />
 

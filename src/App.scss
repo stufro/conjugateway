@@ -1,7 +1,20 @@
+@import "theme";
+
 .app-container {
   min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: rgb(49, 49, 49);
+}
+
+.barCompleted {
+  height: 20px;
+  width: 50%;
+  background-color: $primary-color;
+  transition: width 1s ease-in-out 0s;
+  border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }

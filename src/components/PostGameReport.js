@@ -1,3 +1,5 @@
+import { MdReplay } from 'react-icons/md';
+
 function PostGameReport({ playAgain, answers }) {
   const result = (answer) => {
     if (answer.correct) {
@@ -48,7 +50,10 @@ function PostGameReport({ playAgain, answers }) {
 
   return (
     <div>
-      <button onClick={playAgain}>Play Again</button>
+      <button onClick={playAgain}>
+        <MdReplay />
+        <span style={{ marginLeft: ".5rem" }}>Play Again</span>
+      </button>
 
       {answersReport()}
     </div>
