@@ -5,12 +5,13 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
-  align-items: baseline;
+  align-items: center;
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
   box-shadow: 0 1px 5px $border-color;
 }
 
 .header-title {
   color: $primary-color;
+  margin-bottom: 0;
 }

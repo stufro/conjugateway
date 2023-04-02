@@ -7,19 +7,20 @@ function Verb({ verb }) {
 
   return (
     <div className='verb-container'>
-      <div>
-        <b>verb: </b>
-        <span>{verb.infinitive}</span>
+      <h2>{verb.infinitive}</h2>
+
+      <div className='verb-descriptors'>
+        <div className='badge'>
+          <i className="fa-solid fa-user"></i>
+          <span>{verb.tense}</span>
+        </div>
+
+        <div className='badge'>
+          <span>{verb.person}</span>
+        </div>
       </div>
 
       <div>
-        <b>tense: </b>
-        <span>{verb.tense}</span>
-      </div>
-
-      <div>
-        <b>person: </b>
-        <span>{verb.person}</span>
       </div>
     </div>
   )

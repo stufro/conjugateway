@@ -24,7 +24,7 @@ function PostGameReport({ playAgain, answers }) {
   const answersReport = () => {
     return answers.map((answer) => {
       return (
-        <div>
+        <div key={answer.id}>
           <div>
             <b>verb: </b>
             <span>{answer.infinitive}</span>
