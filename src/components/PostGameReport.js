@@ -1,61 +1,38 @@
-import { MdReplay } from 'react-icons/md';
+import Verb from './Verb';
+import './css/PostGameReport.scss'
 
-function PostGameReport({ playAgain, answers }) {
+function PostGameReport({ answers }) {
   const result = (answer) => {
-    if (answer.correct) {
-      return (
-        <div>✅</div>
-      )
-    } else {
-      return (
+    if (answer.correct) return null;
+
+    return (
+      <div className="answer-feedback">
         <div>
-          <div>
-            <b>Your Answer:</b>
-            <span>{answer.givenAnswer}</span>
-          </div>
-          <div>
-            <b>Correct Answer:</b>
-            <span>{answer.answer}</span>
-          </div>
-          <div>❌</div>
+          <b>Your Answer: </b>
+          <span className='incorrect-answer'>{answer.givenAnswer}</span>
         </div>
-      )
-    }
-  }
-
-  const answersReport = () => {
-    return answers.map((answer) => {
-      return (
-        <div key={answer.id}>
-          <div>
-            <b>verb: </b>
-            <span>{answer.infinitive}</span>
-          </div>
-
-          <div>
-            <b>tense: </b>
-            <span>{answer.tense}</span>
-          </div>
-
-          <div>
-            <b>person: </b>
-            <span>{answer.person}</span>
-          </div>
-
-          {result(answer)}
+        <div>
+          <b>Correct Answer: </b>
+          <span className='correct-answer'>{answer.answer}</span>
         </div>
-      )
-    })
+      </div>
+    )
   }
 
   return (
     <div>
-      <button onClick={playAgain}>
-        <MdReplay />
-        <span style={{ marginLeft: ".5rem" }}>Play Again</span>
-      </button>
+      <div className='report-container'>
+        {answers.map((answer) => {
+          return (
+            <div key={answer.id}>
+              <Verb verb={answer} />
 
-      {answersReport()}
+              {result(answer)}
+            </div>
+          )
+        })
+        }
+      </div>
     </div>
   )
 }

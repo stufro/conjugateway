@@ -4,14 +4,13 @@ import { BsFillPersonFill, BsFillCheckCircleFill } from 'react-icons/bs'
 
 function Verb({ verb }) {
   const overlayClass = () => {
-    if (verb.correctAnswerGiven === true) return "overlay correct";
-    if (verb.correctAnswerGiven === false) return "overlay incorrect";
+    if (verb.correct === true) return "overlay correct";
+    if (verb.correct === false) return "overlay incorrect";
   }
 
   const overlayIcon = () => {
-    if (verb.correctAnswerGiven === true) return <BsFillCheckCircleFill />;
-    if (verb.correctAnswerGiven === false) return <FaTimesCircle />;
-
+    if (verb.correct === true) return <BsFillCheckCircleFill />;
+    if (verb.correct === false) return <FaTimesCircle />;
   }
 
   if (verb === undefined) {

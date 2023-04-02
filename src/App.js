@@ -6,11 +6,13 @@ import AnswerBox from './components/AnswerBox';
 import PostGameReport from './components/PostGameReport';
 import Header from './components/Header';
 import ProgressBar from "@ramonak/react-progress-bar";
+import { MdReplay } from 'react-icons/md';
 
 function App() {
   let data = [
-    { id: 1, infinitive: "hablar", tense: "present", person: "yo", answer: "hablo", correctAnswerGiven: null },
-    { id: 2, infinitive: "comer", tense: "preterite", person: "ellos", answer: "comeron", correctAnswerGiven: null }
+    { id: 1, infinitive: "hablar", tense: "present", person: "yo", answer: "hablo", correct: null },
+    { id: 2, infinitive: "comer", tense: "preterite", person: "ellos", answer: "comeron", correct: null },
+    { id: 3, infinitive: "jugar", tense: "imperfecto", person: "tu", answer: "jugabas", correct: null }
   ];
 
   const [verbs, setVerbs] = useState(data)
@@ -22,7 +24,7 @@ function App() {
   const handleGuess = () => {
     setAnswerSubmitted(true)
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
-    setCurrentVerb({ ...currentVerb, correctAnswerGiven: input === currentVerb.answer })
+    setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer })
 
     setVerbs(verbs.filter((verb) => {
       return verb.id !== currentVerb.id
@@ -45,7 +47,15 @@ function App() {
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const gameStatus = () => {
-    if (!currentVerb) return "Game Over!"
+    if (!currentVerb) return (
+      <div style={{marginBottom: "2rem"}}>
+        <h1 style={{marginBottom: "0"}}>Game Over!</h1>
+        <button onClick={playAgain}>
+          <MdReplay />
+          <span style={{ marginLeft: ".5rem" }}>Play Again</span>
+        </button>
+      </div>
+    )
   }
 
   const playAgain = () => {
@@ -57,7 +67,7 @@ function App() {
     <div className="app-container">
       <Header />
 
-      <h1>{gameStatus()}</h1>
+      {gameStatus()}
       <div style={{ width: "50%", marginBottom: "2em" }}>
         <ProgressBar completed={answers.length} maxCompleted={data.length} customLabel={`${answers.length}/${data.length}`} />
       </div>
