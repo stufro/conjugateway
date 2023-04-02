@@ -8,8 +8,8 @@ import Header from './components/Header';
 
 function App() {
   let data = [
-    { id: 1, infinitive: "hablar", tense: "present", person: "yo", answer: "hablo" },
-    { id: 2, infinitive: "comer", tense: "preterite", person: "ellos", answer: "comeron" }
+    { id: 1, infinitive: "hablar", tense: "present", person: "yo", answer: "hablo", correctAnswerGiven: null },
+    { id: 2, infinitive: "comer", tense: "preterite", person: "ellos", answer: "comeron", correctAnswerGiven: null }
   ];
 
   const [verbs, setVerbs] = useState(data)
@@ -21,6 +21,7 @@ function App() {
   const handleGuess = () => {
     setAnswerSubmitted(true)
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
+    setCurrentVerb({...currentVerb, correctAnswerGiven: input === currentVerb.answer})
 
     setVerbs(verbs.filter((verb) => {
       return verb.id !== currentVerb.id
