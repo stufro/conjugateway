@@ -1,22 +1,35 @@
 @import "/src/theme";
 
 .verb-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   padding: 2rem;
-
-  width: 15rem;
-  height: 10rem;
-
+  width: 25rem;
+  height: 12rem;
   text-align: center;
   margin-bottom: 3rem;
 
   border-radius: .5rem;
   border: 1px solid $border-color;
-
   box-shadow: 3px 3px 5px $border-color;
 }
 
 .verb-descriptors {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: baseline;
   width: 100%;
+  font-size: 1.5em;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  border-radius: 5rem;
+  background-color: $rose;
+  padding: 1rem;
+  color: white;
 }

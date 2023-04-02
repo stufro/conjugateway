@@ -1,4 +1,6 @@
 import './css/Verb.scss'
+import { FaClock } from 'react-icons/fa';
+import { BsFillPersonFill } from 'react-icons/bs'
 
 function Verb({ verb }) {
   if (verb === undefined) {
@@ -11,11 +13,12 @@ function Verb({ verb }) {
 
       <div className='verb-descriptors'>
         <div className='badge'>
-          <i className="fa-solid fa-user"></i>
+          <FaClock />
           <span>{verb.tense}</span>
         </div>
 
         <div className='badge'>
+          <BsFillPersonFill />
           <span>{verb.person}</span>
         </div>
       </div>
