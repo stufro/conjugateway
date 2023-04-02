@@ -6,7 +6,7 @@ import AnswerBox from './components/AnswerBox';
 import PostGameReport from './components/PostGameReport';
 import Header from './components/Header';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { MdReplay } from 'react-icons/md';
+import GameStatus from './components/GameStatus';
 
 function App() {
   let data = [
@@ -19,10 +19,8 @@ function App() {
   const [currentVerb, setCurrentVerb] = useState(data[0])
   const [input, setInput] = useState("")
   const [answers, setAnswers] = useState([])
-  const [answerSubmitted, setAnswerSubmitted] = useState(false)
 
   const handleGuess = () => {
-    setAnswerSubmitted(true)
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
     setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer })
 
@@ -34,7 +32,6 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setInput("")
-      setAnswerSubmitted(false)
 
       const nextVerb = verbs[0]
       setCurrentVerb(nextVerb)
@@ -46,18 +43,6 @@ function App() {
   const handleKeyDown = (event) => { if (event.key === 'Enter') handleGuess() }
   const handleInputChange = (event) => { setInput(event.target.value); }
 
-  const gameStatus = () => {
-    if (!currentVerb) return (
-      <div style={{marginBottom: "2rem"}}>
-        <h1 style={{marginBottom: "0"}}>Game Over!</h1>
-        <button onClick={playAgain}>
-          <MdReplay />
-          <span style={{ marginLeft: ".5rem" }}>Play Again</span>
-        </button>
-      </div>
-    )
-  }
-
   const playAgain = () => {
     setVerbs(data);
     setAnswers([])
@@ -67,8 +52,9 @@ function App() {
     <div className="app-container">
       <Header />
 
-      {gameStatus()}
-      <div style={{ width: "50%", marginBottom: "2em" }}>
+      <GameStatus currentVerb={currentVerb} playAgain={playAgain} />
+
+      <div style={{ width: "50%", marginBottom: "2em", marginTop: "2em" }}>
         <ProgressBar completed={answers.length} maxCompleted={data.length} customLabel={`${answers.length}/${data.length}`} />
       </div>
 

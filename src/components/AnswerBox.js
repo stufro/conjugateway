@@ -1,7 +1,9 @@
+import "./css/AnswerBox.scss"
+
 function AnswerBox({ answer, handleInputChange, handleKeyDown }) {
   return (
-    <div>
-      <input type="text" placeholder="answer" id="answer" value={answer} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+    <div className="input-container">
+      <input type="text" autocomplete="off" className="answer-box" placeholder="Press Enter to Answer" id="answer" value={answer} onChange={handleInputChange} onKeyDown={handleKeyDown} />
     </div>
   )
 }
