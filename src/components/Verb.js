@@ -1,10 +1,12 @@
-function Verb({verb}) {
-  if(verb === undefined) {
+import './css/Verb.scss'
+
+function Verb({ verb }) {
+  if (verb === undefined) {
     return null
   }
 
   return (
-    <div>
+    <div className='verb-container'>
       <div>
         <b>verb: </b>
         <span>{verb.infinitive}</span>

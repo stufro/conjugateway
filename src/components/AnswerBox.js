@@ -1,7 +1,7 @@
 function AnswerBox({ answer, handleInputChange, handleKeyDown }) {
   return (
     <div>
-      <input placeholder="answer" id="answer" value={answer} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+      <input type="text" placeholder="answer" id="answer" value={answer} onChange={handleInputChange} onKeyDown={handleKeyDown} />
     </div>
   )
 }

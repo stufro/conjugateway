@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
+import './theme.scss';
 import Verb from './components/Verb'
 import AnswerBox from './components/AnswerBox';
 import PostGameReport from './components/PostGameReport';

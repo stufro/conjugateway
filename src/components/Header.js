@@ -1,13 +1,13 @@
-import "./css/Header.css"
+import "./css/Header.scss"
 
 function Header() {
   return (
     <div className="header">
-      <span>i</span>
+      <button>i</button>
 
-      <h1>Conjugateway</h1>
+      <h1 className="header-title">Conjugateway</h1>
 
-      <span>Settings</span>
+      <button>Settings</button>
     </div>
   )
 
