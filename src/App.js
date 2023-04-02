@@ -3,6 +3,7 @@ import './App.css';
 import Verb from './components/Verb'
 import AnswerBox from './components/AnswerBox';
 import PostGameReport from './components/PostGameReport';
+import Header from './components/Header';
 
 function App() {
   let data = [
@@ -53,18 +54,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app-container">
+      <Header />
 
-        <h1>{gameStatus()}</h1>
+      <h1>{gameStatus()}</h1>
 
-        <Verb verb={currentVerb} />
+      <Verb verb={currentVerb} />
 
-        {currentVerb ?
-          <AnswerBox answer={input} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
-          <PostGameReport playAgain={playAgain} answers={answers} />
-        }
-      </header>
+      {currentVerb ?
+        <AnswerBox answer={input} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
+        <PostGameReport playAgain={playAgain} answers={answers} />
+      }
     </div>
   );
 }
