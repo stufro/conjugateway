@@ -25,9 +25,7 @@ function App() {
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
     setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer })
 
-    setVerbs(verbs.filter((verb) => {
-      return verb.id !== currentVerb.id
-    }))
+    setVerbs(verbs.filter(verb => verb.id !== currentVerb.id ))
 
     const animate = setTimeout(() => {
       setCurrentVerb({ ...currentVerb, animateClass: "animate-slide-out" })
@@ -69,7 +67,7 @@ function App() {
       <Verb verb={currentVerb} />
 
       {currentVerb ?
-        <AnswerBox answer={input} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
+        <AnswerBox input={input} setInput={setInput} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
         <PostGameReport answers={answers} />
       }
     </div>

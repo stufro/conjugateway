@@ -1,5 +1,8 @@
+@import "/src/theme.scss";
+
 .input-container {
   margin-top: 2rem;
+  margin-bottom: 1rem;
   display: flex;
   width: 100%;
   justify-content: center;
@@ -11,4 +14,22 @@
   height: 3rem;
   font-size: 3ch !important;
   border-radius: 5em !important;
+}
+
+.special-character-toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.special-character {
+  cursor: pointer;
+  background-color: $second-background-color;
+  border-radius: .5rem;
+  padding: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-width: 2rem;
+  font-size: 4ch;
+  text-align: center;
 }
