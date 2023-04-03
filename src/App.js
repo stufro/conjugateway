@@ -37,7 +37,7 @@ function App() {
       const nextVerb = verbs[0]
       setCurrentVerb(nextVerb)
       setLoading(false)
-    }, 1000)
+    }, 1500)
 
     return () => clearTimeout(timer);
   }, [verbs])

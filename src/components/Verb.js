@@ -9,8 +9,8 @@ function Verb({ verb }) {
   }
 
   const overlayIcon = () => {
-    if (verb.correct === true) return <span className='icon'><BsFillCheckCircleFill /></span>;
-    if (verb.correct === false) return <span className='icon'><FaTimesCircle /></span>;
+    if (verb.correct === true) return <BsFillCheckCircleFill />;
+    if (verb.correct === false) return <FaTimesCircle />;
   }
 
   if (verb === undefined) {
@@ -20,7 +20,7 @@ function Verb({ verb }) {
   return (
     <div className="overlay-container">
       <div className={overlayClass()}>
-        {overlayIcon()}
+        <span className='icon'>{overlayIcon()}</span>
       </div>
 
       <div className='verb-container'>
