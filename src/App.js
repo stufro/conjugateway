@@ -19,33 +19,33 @@ function App() {
   const [currentVerb, setCurrentVerb] = useState(data[0])
   const [input, setInput] = useState("")
   const [answers, setAnswers] = useState([])
-  const [loading, setLoading] = useState(false)
 
   const handleGuess = () => {
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
     setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer })
 
-    setVerbs(verbs.filter(verb => verb.id !== currentVerb.id ))
+    const newVerbs = verbs.filter(verb => verb.id !== currentVerb.id )
+    setVerbs(newVerbs)
 
     const animate = setTimeout(() => {
       setCurrentVerb({ ...currentVerb, animateClass: "animate-slide-out" })
     }, 1000)
 
+    nextVerb(newVerbs)
+
     return () => clearTimeout(animate)
   }
 
-  useEffect(() => {
+  const nextVerb = (verbs) => {
     const next = setTimeout(() => {
       setInput("")
 
       const nextVerb = verbs[0]
       setCurrentVerb(nextVerb ? { ...nextVerb, animateClass: "animate-slide-in" } : undefined)
-
-      setLoading(false)
     }, 1500)
 
     return () => clearTimeout(next)
-  }, [verbs])
+  }
 
   const handleKeyDown = (event) => { if (event.key === 'Enter') handleGuess() }
   const handleInputChange = (event) => { setInput(event.target.value); }
@@ -53,14 +53,13 @@ function App() {
   const playAgain = () => {
     setVerbs(data);
     setAnswers([]);
-    setLoading(true)
   }
 
   return (
     <div className="app-container">
       <Header />
 
-      <GameStatus currentVerb={currentVerb} playAgain={playAgain} loading={loading} />
+      <GameStatus currentVerb={currentVerb} playAgain={playAgain} />
 
       <ProgressBar answers={answers} data={data} currentVerb={currentVerb} />
 
