@@ -1,4 +1,5 @@
 import './css/Verb.scss'
+import './../../src/animations.scss'
 import { FaClock, FaTimesCircle } from 'react-icons/fa';
 import { BsFillPersonFill, BsFillCheckCircleFill } from 'react-icons/bs'
 
@@ -18,12 +19,12 @@ function Verb({ verb }) {
   }
 
   return (
-    <div className="overlay-container">
+    <div className={`overlay-container ${verb.animateClass}`}>
       <div className={overlayClass()}>
         <span className='icon'>{overlayIcon()}</span>
       </div>
 
-      <div className='verb-container'>
+      <div className={`verb-container`}>
         <div>
           <h2 style={{ marginBottom: "0" }}>{verb.infinitive}</h2>
           <span className='translation'>{verb.translation}</span>

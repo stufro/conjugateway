@@ -28,18 +28,25 @@ function App() {
     setVerbs(verbs.filter((verb) => {
       return verb.id !== currentVerb.id
     }))
+
+    const animate = setTimeout(() => {
+      setCurrentVerb({ ...currentVerb, animateClass: "animate-slide-out" })
+    }, 1000)
+
+    return () => clearTimeout(animate)
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const next = setTimeout(() => {
       setInput("")
 
       const nextVerb = verbs[0]
-      setCurrentVerb(nextVerb)
+      setCurrentVerb(nextVerb ? { ...nextVerb, animateClass: "animate-slide-in" } : undefined)
+
       setLoading(false)
     }, 1500)
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(next)
   }, [verbs])
 
   const handleKeyDown = (event) => { if (event.key === 'Enter') handleGuess() }
@@ -57,7 +64,7 @@ function App() {
 
       <GameStatus currentVerb={currentVerb} playAgain={playAgain} loading={loading} />
 
-      <ProgressBar answers={answers} data={data} currentVerb={currentVerb}/>
+      <ProgressBar answers={answers} data={data} currentVerb={currentVerb} />
 
       <Verb verb={currentVerb} />
 
