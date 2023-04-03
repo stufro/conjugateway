@@ -5,8 +5,8 @@ import Verb from './components/Verb'
 import AnswerBox from './components/AnswerBox';
 import PostGameReport from './components/PostGameReport';
 import Header from './components/Header';
-import ProgressBar from "@ramonak/react-progress-bar";
 import GameStatus from './components/GameStatus';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
   let data = [
@@ -54,15 +54,13 @@ function App() {
 
       <GameStatus currentVerb={currentVerb} playAgain={playAgain} />
 
-      <div style={{ width: "50%", marginBottom: "2em", marginTop: "2em" }}>
-        <ProgressBar completed={answers.length} maxCompleted={data.length} customLabel={`${answers.length}/${data.length}`} />
-      </div>
+      <ProgressBar answers={answers} data={data} currentVerb={currentVerb}/>
 
       <Verb verb={currentVerb} />
 
       {currentVerb ?
         <AnswerBox answer={input} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
-        <PostGameReport playAgain={playAgain} answers={answers} />
+        <PostGameReport answers={answers} />
       }
     </div>
   );

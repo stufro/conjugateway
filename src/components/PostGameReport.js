@@ -2,8 +2,19 @@ import Verb from './Verb';
 import './css/PostGameReport.scss'
 
 function PostGameReport({ answers }) {
-  const result = (answer) => {
-    if (answer.correct) return null;
+  const results = (answer) => {
+    if (answer.correct) {
+      return (
+        <div className="answer-feedback">
+          <span></span>
+          <div>
+            <b>Answer: </b>
+            <span className='correct-answer'>{answer.givenAnswer}</span>
+          </div>
+          <span></span>
+        </div>
+      )
+    }
 
     return (
       <div className="answer-feedback">
@@ -27,7 +38,7 @@ function PostGameReport({ answers }) {
             <div key={answer.id}>
               <Verb verb={answer} />
 
-              {result(answer)}
+              {results(answer)}
             </div>
           )
         })
