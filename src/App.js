@@ -10,9 +10,9 @@ import GameStatus from './components/GameStatus';
 
 function App() {
   let data = [
-    { id: 1, infinitive: "hablar", tense: "present", person: "yo", answer: "hablo", correct: null },
-    { id: 2, infinitive: "comer", tense: "preterite", person: "ellos", answer: "comeron", correct: null },
-    { id: 3, infinitive: "jugar", tense: "imperfecto", person: "tu", answer: "jugabas", correct: null }
+    { id: 1, infinitive: "hablar", translation: "to speak", tense: "present", person: "yo", answer: "hablo", correct: null },
+    { id: 2, infinitive: "comer", translation: "to eat", tense: "preterite", person: "ellos", answer: "comeron", correct: null },
+    { id: 3, infinitive: "jugar", translation: "to play", tense: "imperfecto", person: "tu", answer: "jugabas", correct: null }
   ];
 
   const [verbs, setVerbs] = useState(data)

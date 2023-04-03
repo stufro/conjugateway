@@ -9,8 +9,8 @@ function Verb({ verb }) {
   }
 
   const overlayIcon = () => {
-    if (verb.correct === true) return <BsFillCheckCircleFill />;
-    if (verb.correct === false) return <FaTimesCircle />;
+    if (verb.correct === true) return <span className='icon'><BsFillCheckCircleFill /></span>;
+    if (verb.correct === false) return <span className='icon'><FaTimesCircle /></span>;
   }
 
   if (verb === undefined) {
@@ -24,7 +24,10 @@ function Verb({ verb }) {
       </div>
 
       <div className='verb-container'>
-        <h2>{verb.infinitive}</h2>
+        <div>
+          <h2 style={{ marginBottom: "0" }}>{verb.infinitive}</h2>
+          <span className='translation'>{verb.translation}</span>
+        </div>
 
         <div className='verb-descriptors'>
           <div className='badge'>
@@ -36,9 +39,6 @@ function Verb({ verb }) {
             <BsFillPersonFill />
             <span>{verb.person}</span>
           </div>
-        </div>
-
-        <div>
         </div>
       </div>
     </div>

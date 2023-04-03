@@ -30,7 +30,6 @@
   background-color: rgba($green, .5);
   color: $green;
   font-size: 4rem;
-  z-index: 1040;
 }
 
 .overlay.correct {
@@ -59,4 +58,13 @@
   background-color: $rose;
   padding: 1rem;
   color: white;
+}
+
+.icon {
+  opacity: .7;
+}
+
+.translation {
+  color: $second-text-color;
+  font-size: 1.5rem;
 }
