@@ -19,6 +19,7 @@ function App() {
   const [currentVerb, setCurrentVerb] = useState(data[0])
   const [input, setInput] = useState("")
   const [answers, setAnswers] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const handleGuess = () => {
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
@@ -35,6 +36,7 @@ function App() {
 
       const nextVerb = verbs[0]
       setCurrentVerb(nextVerb)
+      setLoading(false)
     }, 1000)
 
     return () => clearTimeout(timer);
@@ -45,14 +47,15 @@ function App() {
 
   const playAgain = () => {
     setVerbs(data);
-    setAnswers([])
+    setAnswers([]);
+    setLoading(true)
   }
 
   return (
     <div className="app-container">
       <Header />
 
-      <GameStatus currentVerb={currentVerb} playAgain={playAgain} />
+      <GameStatus currentVerb={currentVerb} playAgain={playAgain} loading={loading} />
 
       <ProgressBar answers={answers} data={data} currentVerb={currentVerb}/>
 
