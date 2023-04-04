@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.scss';
 import './theme.scss';
 import Verb from './components/Verb'
@@ -47,11 +47,12 @@ function App() {
     return () => clearTimeout(next)
   }
 
-  const handleKeyDown = (event) => { if (event.key === 'Enter') handleGuess() }
+  const handleKeyDown = (event) => { if (event.key === 'Enter' && input !== "") handleGuess() }
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const playAgain = () => {
     setVerbs(data);
+    setCurrentVerb(data[0]);
     setAnswers([]);
   }
 
