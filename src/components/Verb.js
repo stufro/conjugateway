@@ -27,18 +27,18 @@ function Verb({ verb }) {
       <div className={`verb-container`}>
         <div>
           <h2 style={{ marginBottom: "0" }}>{verb.infinitive}</h2>
-          <span className='translation'>{verb.translation}</span>
+          <span className='translation'>{verb.infinitive_english}</span>
         </div>
 
         <div className='verb-descriptors'>
           <div className='badge'>
             <FaClock />
-            <span>{verb.tense}</span>
+            <span>{verb.tense_english}</span>
           </div>
 
           <div className='badge'>
             <BsFillPersonFill />
-            <span>{verb.person}</span>
+            <span>{verb.actor}</span>
           </div>
         </div>
       </div>
