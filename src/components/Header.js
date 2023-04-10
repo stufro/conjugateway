@@ -7,7 +7,7 @@ function Header() {
 
       <h1 className="header-title">Conjugateway</h1>
 
-      <button>Settings</button>
+      <button>x</button>
     </div>
   )
 

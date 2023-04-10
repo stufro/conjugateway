@@ -10,7 +10,7 @@ function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
   const renderSpecialCharacters = () => {
     return specialCharacters.map((character) => {
       return (
-        <div className="special-character" onClick={() => handleSpecialCharacter(character)}>
+        <div key={character} className="special-character" onClick={() => handleSpecialCharacter(character)}>
           {character}
         </div>
       )
@@ -20,7 +20,7 @@ function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
   return (
     <>
       <div className="input-container">
-        <input type="text" autocomplete="off" className="answer-box" placeholder="Press Enter to Answer" id="answer" value={input} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+        <input type="text" autoComplete="off" className="answer-box" placeholder="Press Enter to Answer" id="answer" value={input} onChange={handleInputChange} onKeyDown={handleKeyDown} />
       </div>
 
       <div className="special-character-toolbar">
