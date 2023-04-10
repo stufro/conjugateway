@@ -72165,4 +72165,20 @@ function data() {
   ]
 }
 
-export default data
+function selectVerbs(actors, tenses, NUMBER_OF_QUESTIONS) {
+  const sample = [];
+
+  while (sample.length < NUMBER_OF_QUESTIONS) {
+    const index = Math.floor(Math.random() * data().length);
+    const verb = data()[index];
+    if (!sample.includes(verb) && tenses.includes (verb.tense_english.toLowerCase())) {
+      const actor = actors[Math.floor(Math.random() * actors.length)]
+      const answer = verb[actor.replace("/", "_")]
+      sample.push({ ...verb, actor: actor, answer: answer });
+    }
+  }
+  return sample
+}
+
+
+export default selectVerbs

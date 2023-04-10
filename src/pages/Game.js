@@ -4,27 +4,12 @@ import AnswerBox from './../components/AnswerBox';
 import PostGameReport from './../components/PostGameReport';
 import GameStatus from './../components/GameStatus';
 import ProgressBar from './../components/ProgressBar';
-import data from './data/verbs'
+import selectVerbs from './data/verbs'
 
 const NUMBER_OF_QUESTIONS = 5;
 
 function Game({ actors, tenses }) {
-  const selectVerbs = () => {
-    const sample = [];
-
-    while (sample.length < NUMBER_OF_QUESTIONS) {
-      const index = Math.floor(Math.random() * data().length);
-      const verb = data()[index];
-      if (!sample.includes(verb) && tenses.includes(verb.tense_english.toLowerCase())) {
-        const actor = actors[Math.floor(Math.random() * actors.length)]
-        const answer = verb[actor.replace("/", "-")]
-        sample.push({ ...verb, actor: actor, answer: answer });
-      }
-    }
-    return sample
-  }
-
-  const [verbs, setVerbs] = useState(() => { return selectVerbs() })
+  const [verbs, setVerbs] = useState(() => { return selectVerbs(actors, tenses, NUMBER_OF_QUESTIONS) })
   const [currentVerb, setCurrentVerb] = useState({...verbs[0], animateClass: "animate-slide-in" })
   const [input, setInput] = useState("")
   const [answers, setAnswers] = useState([])
@@ -60,7 +45,7 @@ function Game({ actors, tenses }) {
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const playAgain = () => {
-    const newVerbs = selectVerbs()
+    const newVerbs = selectVerbs(actors, tenses, NUMBER_OF_QUESTIONS)
     setVerbs(newVerbs);
     setCurrentVerb(newVerbs[0]);
     setAnswers([]);
