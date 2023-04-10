@@ -8,13 +8,18 @@
   color: rgb(49, 49, 49);
 }
 
-.barCompleted {
-  height: 20px;
-  width: 50%;
-  background-color: $primary-color;
-  transition: width 1s ease-in-out 0s;
-  border-radius: inherit;
+.settings {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.settings-section {
+  border: 1px solid $border-color;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.settings-option {
+  padding-bottom: .5rem;
 }

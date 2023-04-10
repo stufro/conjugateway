@@ -1,30 +1,42 @@
+import '../App.scss'
+
 function Settings({ setOpenGame, tenses, setTenses, actors, setActors }) {
-  const renderOptions = () => {
-    return Object.entries(tenses).map((tense) => {
+  const renderOptions = (type) => {
+    const items = type === "tenses" ? tenses : actors
+
+    return Object.entries(items).map((item) => {
       return (
-        <div key={tense} style={{display: "flex"}}>
-          <input id={tense[0]} key={`input-${tense[0]}`} type="checkbox" checked={tense[1]} onChange={updateTenses}></input>
-          <label key={`label-${tense[0]}`} htmlFor={tense[0]}>{tense[0]}</label>
+        <div className='settings-option' key={item} style={{display: "flex"}}>
+          <input id={item[0]} key={`input-${item[0]}`} type="checkbox" checked={item[1]} onChange={(event) => { updateOptions(event, type, items) }}></input>
+          <label key={`label-${item[0]}`} htmlFor={item[0]}>{item[0]}</label>
         </div>
       )
     })
   }
 
-  const updateTenses = (event) => {
-    const newTenses = { ...tenses }
-    newTenses[event.target.id] = !newTenses[event.target.id]
+  const updateOptions = (event, type, items) => {
+    const newOptions = { ...items }
+    newOptions[event.target.id] = !newOptions[event.target.id]
 
-    setTenses(newTenses)
+    type === "tenses" ? setTenses(newOptions) : setActors(newOptions)
   }
 
   return (
     <>
-      <h2>Game Settings</h2>
+      <br/>
       <h2><button className="primary-button" onClick={setOpenGame}>Start!</button></h2>
 
 
-      <div>
-        <div>{renderOptions()} </div>
+      <div className='settings'>
+        <div className='settings-section'>
+          <h3>Tenses</h3>
+          {renderOptions("tenses")}
+        </div>
+
+        <div className='settings-section'>
+          <h3>Actors</h3>
+          {renderOptions("actors")}
+        </div>
       </div>
     </>
   )
