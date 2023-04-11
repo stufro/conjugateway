@@ -1,9 +1,7 @@
 import '../App.scss'
 
 function Settings({ setOpenGame, tenses, setTenses, actors, setActors }) {
-  const renderOptions = (type) => {
-    const items = type === "tenses" ? tenses : actors
-
+  const renderOptions = (items, type) => {
     return Object.entries(items).map((item) => {
       return (
         <div className='settings-option' key={item} style={{display: "flex"}}>
@@ -30,12 +28,12 @@ function Settings({ setOpenGame, tenses, setTenses, actors, setActors }) {
       <div className='settings'>
         <div className='settings-section'>
           <h3>Tenses</h3>
-          {renderOptions("tenses")}
+          {renderOptions(tenses, "tenses")}
         </div>
 
         <div className='settings-section'>
           <h3>Actors</h3>
-          {renderOptions("actors")}
+          {renderOptions(actors, "actors")}
         </div>
       </div>
     </>
