@@ -10,13 +10,8 @@ function App() {
   const [tenses, setTenses] = useState({ "present": true, "preterite": true, "imperfect": true, "conditional": true, "future": true, "present perfect": true })
   const [actors, setActors] = useState({ "yo": true, "tù": true, "él/ella": true, "nosotros": true, "ellos/ellas": true, "vosotros": true })
 
-  const chosenActors = () => {
-    const chosen = Object.entries(actors).filter((actor) => actor[1] === true)
-    return chosen.map((keyValue) => keyValue[0])
-  }
-
-  const chosenTenses = () => {
-    const chosen = Object.entries(tenses).filter((tense) => tense[1] === true)
+  const chosenOptions = (items) => {
+    const chosen = Object.entries(items).filter((item) => item[1] === true)
     return chosen.map((keyValue) => keyValue[0])
   }
 
@@ -24,7 +19,7 @@ function App() {
     <div className="app-container">
       <Header />
 
-      {openGame ? <Game actors={chosenActors()} tenses={chosenTenses()} /> : <Settings setOpenGame={setOpenGame} tenses={tenses} setTenses={setTenses} actors={actors} setActors={setActors} />}
+      {openGame ? <Game actors={chosenOptions(actors)} tenses={chosenOptions(tenses)} /> : <Settings setOpenGame={setOpenGame} tenses={tenses} setTenses={setTenses} actors={actors} setActors={setActors} />}
     </div>
   );
 }
