@@ -38,7 +38,7 @@ function Verb({ verb }) {
 
           <div className='badge'>
             <BsFillPersonFill />
-            <span>{verb.actor}</span>
+            <span>{verb.subject}</span>
           </div>
         </div>
       </div>

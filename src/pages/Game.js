@@ -8,8 +8,8 @@ import selectVerbs from './data/verbs'
 
 const NUMBER_OF_QUESTIONS = 5;
 
-function Game({ actors, tenses }) {
-  const [verbs, setVerbs] = useState(() => { return selectVerbs(actors, tenses, NUMBER_OF_QUESTIONS) })
+function Game({ subjects, tenses }) {
+  const [verbs, setVerbs] = useState(() => { return selectVerbs(subjects, tenses, NUMBER_OF_QUESTIONS) })
   const [currentVerb, setCurrentVerb] = useState({...verbs[0], animateClass: "animate-slide-in" })
   const [input, setInput] = useState("")
   const [answers, setAnswers] = useState([])
@@ -45,7 +45,7 @@ function Game({ actors, tenses }) {
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const playAgain = () => {
-    const newVerbs = selectVerbs(actors, tenses, NUMBER_OF_QUESTIONS)
+    const newVerbs = selectVerbs(subjects, tenses, NUMBER_OF_QUESTIONS)
     setVerbs(newVerbs);
     setCurrentVerb(newVerbs[0]);
     setAnswers([]);
