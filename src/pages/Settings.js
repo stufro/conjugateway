@@ -1,7 +1,9 @@
 import '../App.scss'
 import CheckboxSettings from '../components/CheckboxSettings'
 
-function Settings({ setOpenGame, tenses, setTenses, subjects, setSubjects }) {
+function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects }) {
+  if(gameInProgress) return null
+
   const toggleAll = (items) => {
     const isChecked = !Object.values(items)[0]
     return Object.fromEntries(Object.keys(items).map(key => [key, isChecked]))
@@ -10,7 +12,6 @@ function Settings({ setOpenGame, tenses, setTenses, subjects, setSubjects }) {
   return (
     <>
       <br />
-      <h2><button className="primary-button" onClick={setOpenGame}>Start!</button></h2>
 
       <div className='settings'>
         <div className='settings-section'>

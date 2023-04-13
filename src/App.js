@@ -6,7 +6,7 @@ import Game from './pages/Game';
 import Settings from './pages/Settings';
 
 function App() {
-  const [openGame, setOpenGame] = useState(false)
+  const [gameInProgress, setGameInProgress] = useState(false)
   const [tenses, setTenses] = useState({ "present": true, "preterite": true, "imperfect": true, "conditional": true, "future": true, "present perfect": true })
   const [subjects, setSubjects] = useState({ "yo": true, "tù": true, "él/ella": true, "nosotros": true, "ellos/ellas": true, "vosotros": true })
 
@@ -19,7 +19,8 @@ function App() {
     <div className="app-container">
       <Header />
 
-      {openGame ? <Game subjects={chosenOptions(subjects)} tenses={chosenOptions(tenses)} /> : <Settings setOpenGame={setOpenGame} tenses={tenses} setTenses={setTenses} subjects={subjects} setSubjects={setSubjects} />}
+      <Settings gameInProgress={gameInProgress} tenses={tenses} setTenses={setTenses} subjects={subjects} setSubjects={setSubjects} />
+      <Game gameInProgress={gameInProgress} setGameInProgress={setGameInProgress} subjects={chosenOptions(subjects)} tenses={chosenOptions(tenses)} />
     </div>
   );
 }

@@ -6,11 +6,11 @@ import GameStatus from './../components/GameStatus';
 import ProgressBar from './../components/ProgressBar';
 import selectVerbs from './data/verbs'
 
-const NUMBER_OF_QUESTIONS = 5;
+const NUMBER_OF_QUESTIONS = 2;
 
-function Game({ subjects, tenses }) {
-  const [verbs, setVerbs] = useState(() => { return selectVerbs(subjects, tenses, NUMBER_OF_QUESTIONS) })
-  const [currentVerb, setCurrentVerb] = useState({...verbs[0], animateClass: "animate-slide-in" })
+function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
+  const [verbs, setVerbs] = useState([])
+  const [currentVerb, setCurrentVerb] = useState(undefined)
   const [input, setInput] = useState("")
   const [answers, setAnswers] = useState([])
 
@@ -35,7 +35,12 @@ function Game({ subjects, tenses }) {
       setInput("")
 
       const nextVerb = verbs[0]
-      setCurrentVerb(nextVerb ? { ...nextVerb, animateClass: "animate-slide-in" } : undefined)
+      if(nextVerb) {
+        setCurrentVerb({ ...nextVerb, animateClass: "animate-slide-in" })
+      } else {
+        setCurrentVerb(undefined)
+        setGameInProgress(false)
+      }
     }, 1500)
 
     return () => clearTimeout(next)
@@ -44,16 +49,17 @@ function Game({ subjects, tenses }) {
   const handleKeyDown = (event) => { if (event.key === 'Enter' && input !== "") handleGuess() }
   const handleInputChange = (event) => { setInput(event.target.value); }
 
-  const playAgain = () => {
+  const startGame = () => {
     const newVerbs = selectVerbs(subjects, tenses, NUMBER_OF_QUESTIONS)
     setVerbs(newVerbs);
-    setCurrentVerb(newVerbs[0]);
+    setCurrentVerb({ ...newVerbs[0], animateClass: "animate-slide-in" });
     setAnswers([]);
+    setGameInProgress(true);
   }
 
   return (
     <>
-      <GameStatus currentVerb={currentVerb} playAgain={playAgain} />
+      <GameStatus gameInProgress={gameInProgress} startGame={startGame} />
 
       <ProgressBar answers={answers} questions={NUMBER_OF_QUESTIONS} currentVerb={currentVerb} />
 

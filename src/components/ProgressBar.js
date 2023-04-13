@@ -9,7 +9,6 @@ function ProgressBar({ answers, questions, currentVerb }) {
       <ReactProgressBar completed={answers.length} maxCompleted={questions} customLabel={`${answers.length}/${questions}`} />
     </div>
   )
-
 }
 
 export default ProgressBar
