@@ -16,7 +16,7 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
 
   const handleGuess = () => {
     setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
-    setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer })
+    setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer, givenAnswer: input })
 
     const newVerbs = verbs.filter(verb => verb.infinitive !== currentVerb.infinitive)
     setVerbs(newVerbs)

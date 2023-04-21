@@ -1,0 +1,4 @@
+- [ ] Refactor away answers state, just use verbs
+- [ ] Show incorrect answer on verb
+- [ ] Move renderSpecialCharacters() in AnswerBox.js to component
+- [ ] Move settings css

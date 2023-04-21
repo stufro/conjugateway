@@ -20,6 +20,7 @@ function Verb({ verb }) {
 
   return (
     <div className={`overlay-container ${verb.animateClass}`}>
+
       <div className={overlayClass()}>
         <span className='icon'>{overlayIcon()}</span>
       </div>
