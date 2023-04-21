@@ -35,7 +35,7 @@ function PostGameReport({ answers }) {
       <div className='report-container'>
         {answers.map((answer) => {
           return (
-            <div key={answer.id}>
+            <div key={answer.answer}>
               <Verb verb={answer} />
 
               {results(answer)}

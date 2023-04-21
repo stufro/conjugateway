@@ -12,14 +12,12 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
   const [verbs, setVerbs] = useState([])
   const [currentVerb, setCurrentVerb] = useState(undefined)
   const [input, setInput] = useState("")
-  const [answers, setAnswers] = useState([])
 
   const handleGuess = () => {
-    setAnswers([...answers, { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer }])
-    setCurrentVerb({ ...currentVerb, correct: input === currentVerb.answer, givenAnswer: input })
-
-    const newVerbs = verbs.filter(verb => verb.infinitive !== currentVerb.infinitive)
+    const verbWithAnswer = { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer, completed: true }
+    const newVerbs = verbs.map((verb) => verb.answer === verbWithAnswer.answer ? verbWithAnswer : verb)
     setVerbs(newVerbs)
+    setCurrentVerb(verbWithAnswer)
 
     const animate = setTimeout(() => {
       setCurrentVerb({ ...currentVerb, animateClass: "animate-slide-out" })
@@ -34,7 +32,7 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
     const next = setTimeout(() => {
       setInput("")
 
-      const nextVerb = verbs[0]
+      const nextVerb = verbs.find((verb) => verb.completed !== true )
       if(nextVerb) {
         setCurrentVerb({ ...nextVerb, animateClass: "animate-slide-in" })
       } else {
@@ -53,7 +51,6 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
     const newVerbs = selectVerbs(subjects, tenses, NUMBER_OF_QUESTIONS)
     setVerbs(newVerbs);
     setCurrentVerb({ ...newVerbs[0], animateClass: "animate-slide-in" });
-    setAnswers([]);
     setGameInProgress(true);
   }
 
@@ -61,13 +58,13 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
     <>
       <GameStatus gameInProgress={gameInProgress} startGame={startGame} />
 
-      <ProgressBar answers={answers} questions={NUMBER_OF_QUESTIONS} currentVerb={currentVerb} />
+      <ProgressBar verbs={verbs} questionsCount={NUMBER_OF_QUESTIONS} currentVerb={currentVerb} />
 
       <Verb verb={currentVerb} />
 
       {currentVerb ?
         <AnswerBox input={input} setInput={setInput} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
-        <PostGameReport answers={answers} />
+        <PostGameReport answers={verbs} />
       }
     </>
   )

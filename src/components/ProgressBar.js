@@ -1,12 +1,14 @@
 import "./css/ProgressBar.scss"
 import ReactProgressBar from "@ramonak/react-progress-bar"
 
-function ProgressBar({ answers, questions, currentVerb }) {
+function ProgressBar({ verbs, questionsCount, currentVerb }) {
   if (!currentVerb) return null
+
+  const answersGiven = verbs.filter((answer) => answer.completed === true)
 
   return (
     <div style={{ width: "50%", marginBottom: "2em", marginTop: "2em" }}>
-      <ReactProgressBar completed={answers.length} maxCompleted={questions} customLabel={`${answers.length}/${questions}`} />
+      <ReactProgressBar completed={answersGiven} maxCompleted={questionsCount} customLabel={`${answersGiven}/${questionsCount}`} />
     </div>
   )
 }
