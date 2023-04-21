@@ -1,26 +1,11 @@
 import { useRef } from "react";
+import SpecialCharacter from "./SpecialCharacter";
 import "./css/AnswerBox.scss"
 
 const specialCharacters = ["á", "é", "í", "ó", "ñ"]
 
 function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
   const inputRef = useRef(null);
-
-  const handleSpecialCharacter = (character) => {
-    setInput(input + character)
-    inputRef.current.focus()
-  }
-
-  const renderSpecialCharacters = () => {
-    return specialCharacters.map((character) => {
-      return (
-        <div key={character} className="special-character" onClick={() => handleSpecialCharacter(character)}>
-          {character}
-        </div>
-      )
-    })
-  }
-
   return (
     <>
       <div className="input-container">
@@ -28,7 +13,7 @@ function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
       </div>
 
       <div className="special-character-toolbar">
-        {renderSpecialCharacters()}
+        {specialCharacters.map((char) => <SpecialCharacter character={char} input={input} inputRef={inputRef} setInput={setInput}/>)}
       </div>
     </>
   )

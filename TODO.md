@@ -1,6 +1,5 @@
 - [x] Refactor away answers state, just use verbs
 - [ ] Show incorrect answer on verb
-- [ ] Move renderSpecialCharacters() in AnswerBox.js to component
-- [ ] Move settings css
+- [x] Move renderSpecialCharacters() in AnswerBox.js to component
 - [ ] Move number of questions to slider
 - [x] Fix present/perfect css
