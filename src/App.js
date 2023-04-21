@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.scss';
 import './theme.scss';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Game from './pages/Game';
 import Settings from './pages/Settings';
 
@@ -21,6 +22,8 @@ function App() {
 
       <Settings gameInProgress={gameInProgress} tenses={tenses} setTenses={setTenses} subjects={subjects} setSubjects={setSubjects} />
       <Game gameInProgress={gameInProgress} setGameInProgress={setGameInProgress} subjects={chosenOptions(subjects)} tenses={chosenOptions(tenses)} />
+
+      <Footer />
     </div>
   );
 }

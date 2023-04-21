@@ -1,17 +1,41 @@
 @import "/src/theme";
 
 .header {
-  height: 5rem;
   width: 100%;
+  height: 7rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 1rem;
   padding-bottom: .5rem;
-  box-shadow: 0 1px 5px $border-color;
 }
 
 .header-title {
   color: $primary-color;
   margin-bottom: 0;
+}
+
+.header-container {
+  width: 100%;
+  position: relative;
+}
+
+.custom-shape-divider-top-1682099613 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1682099613 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 110px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1682099613 .shape-fill {
+  fill: $primary-color;
 }
