@@ -6,9 +6,8 @@ import GameStatus from './../components/GameStatus';
 import ProgressBar from './../components/ProgressBar';
 import selectVerbs from './data/verbs'
 
-const NUMBER_OF_QUESTIONS = 2;
 
-function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
+function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQuestions }) {
   const [verbs, setVerbs] = useState([])
   const [currentVerb, setCurrentVerb] = useState(undefined)
   const [input, setInput] = useState("")
@@ -48,7 +47,7 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const startGame = () => {
-    const newVerbs = selectVerbs(subjects, tenses, NUMBER_OF_QUESTIONS)
+    const newVerbs = selectVerbs(subjects, tenses, numberOfQuestions)
     setVerbs(newVerbs);
     setCurrentVerb({ ...newVerbs[0], animateClass: "animate-slide-in" });
     setGameInProgress(true);
@@ -58,7 +57,7 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses }) {
     <>
       <GameStatus gameInProgress={gameInProgress} startGame={startGame} />
 
-      <ProgressBar verbs={verbs} questionsCount={NUMBER_OF_QUESTIONS} currentVerb={currentVerb} />
+      <ProgressBar verbs={verbs} questionsCount={numberOfQuestions} currentVerb={currentVerb} />
 
       <Verb verb={currentVerb} />
 

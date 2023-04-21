@@ -1,7 +1,7 @@
 import '../App.scss'
 import CheckboxSettings from '../components/CheckboxSettings'
 
-function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects }) {
+function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects, numberOfQuestions, setNumberOfQuestions }) {
   if(gameInProgress) return null
 
   const toggleAll = (items) => {
@@ -9,9 +9,19 @@ function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects }) 
     return Object.fromEntries(Object.keys(items).map(key => [key, isChecked]))
   }
 
+  const handleInputChange = (event) => {
+    const newValue = parseInt(event.target.value) > 50 ? 50 : event.target.value
+    setNumberOfQuestions(newValue)
+  }
+
   return (
     <>
       <br />
+
+      <div className='questions-count'>
+        <label>Number of Questions</label>
+        <input type='number' max='50' autoComplete='off' value={numberOfQuestions} onChange={handleInputChange}/>
+      </div>
 
       <div className='settings'>
         <div className='settings-section'>
