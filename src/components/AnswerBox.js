@@ -13,7 +13,7 @@ function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
       </div>
 
       <div className="special-character-toolbar">
-        {specialCharacters.map((char) => <SpecialCharacter character={char} input={input} inputRef={inputRef} setInput={setInput}/>)}
+        {specialCharacters.map((char) => <SpecialCharacter key={char} character={char} input={input} inputRef={inputRef} setInput={setInput}/>)}
       </div>
     </>
   )

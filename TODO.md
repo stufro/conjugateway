@@ -3,3 +3,4 @@
 - [x] Move renderSpecialCharacters() in AnswerBox.js to component
 - [ ] Move number of questions to slider
 - [x] Fix present/perfect css
+- [ ] prettify checkboxes
