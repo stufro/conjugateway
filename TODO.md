@@ -1,6 +1,7 @@
 - [x] Refactor away answers state, just use verbs
 - [ ] Show incorrect answer on verb
 - [x] Move renderSpecialCharacters() in AnswerBox.js to component
-- [ ] Move number of questions to slider
+- [x] Move number of questions to slider
 - [x] Fix present/perfect css
-- [ ] prettify checkboxes
+- [x] prettify checkboxes
+- [ ] don't allow starting game with none selected
