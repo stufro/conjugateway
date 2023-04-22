@@ -4,7 +4,26 @@
   position: relative;
   height: 100%;
   width: 100%;
-  margin-top: 5rem;
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer-notes {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: $background-color;
+}
+
+.footer-notes small {
+  margin-bottom: .5rem;
+}
+
+.footer-notes a {
+  color: $background-color;
+  text-decoration: underline;
 }
 
 .custom-shape-divider-bottom {
@@ -20,7 +39,7 @@
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 50px;
+  height: 70px;
 }
 
 .custom-shape-divider-bottom .shape-fill {
