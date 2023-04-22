@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/conjugateway/react-gh-pages/static/css/main.0fa2d765.css",
+    "main.js": "/conjugateway/react-gh-pages/static/js/main.f5cb2afc.js",
+    "static/js/787.eebf7837.chunk.js": "/conjugateway/react-gh-pages/static/js/787.eebf7837.chunk.js",
+    "index.html": "/conjugateway/react-gh-pages/index.html",
+    "main.0fa2d765.css.map": "/conjugateway/react-gh-pages/static/css/main.0fa2d765.css.map",
+    "main.f5cb2afc.js.map": "/conjugateway/react-gh-pages/static/js/main.f5cb2afc.js.map",
+    "787.eebf7837.chunk.js.map": "/conjugateway/react-gh-pages/static/js/787.eebf7837.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0fa2d765.css",
+    "static/js/main.f5cb2afc.js"
+  ]
+}
