@@ -47,10 +47,14 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQue
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const startGame = () => {
-    const newVerbs = selectVerbs(subjects, tenses, numberOfQuestions)
-    setVerbs(newVerbs);
-    setCurrentVerb({ ...newVerbs[0], animateClass: "animate-slide-in" });
-    setGameInProgress(true);
+    if(tenses.length > 0 && subjects.length > 0) {
+      const newVerbs = selectVerbs(subjects, tenses, numberOfQuestions)
+      setVerbs(newVerbs);
+      setCurrentVerb({ ...newVerbs[0], animateClass: "animate-slide-in" });
+      setGameInProgress(true);
+    } else {
+      alert("Foo")
+    }
   }
 
   return (

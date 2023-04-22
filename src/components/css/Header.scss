@@ -2,11 +2,11 @@
 
 .header {
   width: 100%;
-  height: 7rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding-bottom: .5rem;
+  margin-top: calc(5rem - 3vw);
 }
 
 .header-title {
@@ -32,7 +32,7 @@
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 110px;
+  height: 70px;
   transform: rotateY(180deg);
 }
 

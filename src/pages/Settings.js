@@ -14,6 +14,10 @@ function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects, nu
     setNumberOfQuestions(newValue)
   }
 
+  const allFalse = (object) => {
+    return Object.entries(object).every((tense) => tense[1] === false)
+  }
+
   return (
     <>
       <br />
@@ -27,12 +31,14 @@ function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects, nu
         <div className='settings-section'>
           <h3>Tenses</h3>
           <button onClick={() => { setTenses(toggleAll(tenses)) }}>Toggle All</button>
+          {allFalse(tenses) ? <p style={{marginTop: 0}}><small>Select at least 1</small></p> : null}
           <CheckboxSettings items={tenses} setState={setTenses} />
         </div>
 
         <div className='settings-section'>
           <h3>Subjects</h3>
           <button onClick={() => { setSubjects(toggleAll(subjects)) }}>Toggle All</button>
+          {allFalse(subjects) ? <p style={{marginTop: 0}}><small>Select at least 1</small></p> : null}
           <CheckboxSettings items={subjects} setState={setSubjects} />
         </div>
       </div>
