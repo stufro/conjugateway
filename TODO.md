@@ -4,4 +4,4 @@
 - [x] Move number of questions to slider
 - [x] Fix present/perfect css
 - [x] prettify checkboxes
-- [ ] don't allow starting game with none selected
+- [x] don't allow starting game with none selected

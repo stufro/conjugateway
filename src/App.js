@@ -21,8 +21,10 @@ function App() {
     <div className="app-container">
       <Header />
 
-      <Settings gameInProgress={gameInProgress} tenses={tenses} setTenses={setTenses} subjects={subjects} setSubjects={setSubjects} numberOfQuestions={numberOfQuestions} setNumberOfQuestions={setNumberOfQuestions} />
-      <Game gameInProgress={gameInProgress} setGameInProgress={setGameInProgress} subjects={chosenOptions(subjects)} tenses={chosenOptions(tenses)} numberOfQuestions={numberOfQuestions} />
+      <div className='game-container'>
+        <Settings gameInProgress={gameInProgress} tenses={tenses} setTenses={setTenses} subjects={subjects} setSubjects={setSubjects} numberOfQuestions={numberOfQuestions} setNumberOfQuestions={setNumberOfQuestions} />
+        <Game gameInProgress={gameInProgress} setGameInProgress={setGameInProgress} subjects={chosenOptions(subjects)} tenses={chosenOptions(tenses)} numberOfQuestions={numberOfQuestions} />
+      </div>
 
       <Footer />
     </div>

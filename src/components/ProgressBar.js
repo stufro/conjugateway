@@ -7,7 +7,7 @@ function ProgressBar({ verbs, questionsCount, currentVerb }) {
   const answersGiven = verbs.filter((answer) => answer.completed === true).length
 
   return (
-    <div style={{ width: "50%", marginBottom: "2em", marginTop: "2em" }}>
+    <div style={{ width: "100%", marginBottom: "2em", marginTop: "2em" }}>
       <ReactProgressBar completed={answersGiven} maxCompleted={parseInt(questionsCount)} customLabel={`${answersGiven}/${questionsCount}`} />
     </div>
   )

@@ -1,11 +1,19 @@
 @import "theme";
 
 .app-container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   color: rgb(49, 49, 49);
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .settings {
@@ -30,10 +38,15 @@
 
 .questions-count {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: .5rem;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.questions-count input {
+  text-align: center;
 }
 
 .custom-shape-divider-bottom-1682099831 {

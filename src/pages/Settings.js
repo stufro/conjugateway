@@ -20,8 +20,6 @@ function Settings({ gameInProgress, tenses, setTenses, subjects, setSubjects, nu
 
   return (
     <>
-      <br />
-
       <div className='questions-count'>
         <label>Number of Questions</label>
         <input type='number' max='50' autoComplete='off' value={numberOfQuestions} onChange={handleInputChange}/>
