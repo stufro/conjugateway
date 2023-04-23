@@ -10,7 +10,7 @@ function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
     <>
       <div className="input-container">
         <input
-          type="text" ref={inputRef} autoComplete="off" autocorrect="off" autocapitalize="off"
+          type="text" ref={inputRef} autoComplete="off" autoCorrect="off" autoCapitalize="off"
           className="answer-box" placeholder="Press Enter to Answer" id="answer"
           value={input} onChange={handleInputChange} onKeyDown={handleKeyDown}
         />

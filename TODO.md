@@ -7,4 +7,4 @@
 - [x] don't allow starting game with none selected
 - [x] don't capitilize first letter on input
 - [x] don't autocorrect on input
-- [ ] fix respnosiveness of tense/subject on mobile verb card
+- [x] fix respnosiveness of tense/subject on mobile verb card

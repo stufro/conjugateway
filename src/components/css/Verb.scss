@@ -5,8 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  padding: 2rem;
-  width: 75vw;
+  padding: 2rem .5rem 2rem .5rem;
   min-height: 12rem;
   text-align: center;
 
@@ -22,6 +21,7 @@
 }
 
 .overlay-container {
+  margin: 0 1rem 0 1rem;
   position: relative;
 }
 
@@ -62,6 +62,7 @@
 .verb-descriptors {
   display: flex;
   justify-content: space-between;
+  gap: .08rem;
   align-items: baseline;
   width: 100%;
   font-size: 2.5ch;
@@ -75,6 +76,12 @@
   background-color: $rose;
   padding: 1rem;
   color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .badge {
+    font-size: 1.3ch;
+  }
 }
 
 .translation {
