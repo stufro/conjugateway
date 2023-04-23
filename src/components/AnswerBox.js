@@ -4,8 +4,16 @@ import "./css/AnswerBox.scss"
 
 const specialCharacters = ["á", "é", "í", "ó", "ñ"]
 
-function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
+function AnswerBox({ input, setInput, handleInputChange, handleGuess, setAnswerSubmitted }) {
   const inputRef = useRef(null);
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && input !== "") {
+      handleGuess()
+      setAnswerSubmitted(true)
+    }
+  }
+
   return (
     <>
       <div className="input-container">

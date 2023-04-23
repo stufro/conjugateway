@@ -5,7 +5,7 @@ function PostGameReport({ answers }) {
   const results = (answer) => {
     if (answer.correct) {
       return (
-        <div className="answer-feedback">
+        <div className="answer">
           <span></span>
           <div>
             <b>Answer: </b>
@@ -17,7 +17,7 @@ function PostGameReport({ answers }) {
     }
 
     return (
-      <div className="answer-feedback">
+      <div className="answer">
         <div>
           <b>Your Answer: </b>
           <span className='incorrect-answer'>{answer.givenAnswer}</span>

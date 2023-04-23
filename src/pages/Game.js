@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Verb from './../components/Verb'
 import AnswerBox from './../components/AnswerBox';
+import AnswerFeedback from '../components/AnswerFeedback';
 import PostGameReport from './../components/PostGameReport';
 import GameStatus from './../components/GameStatus';
 import ProgressBar from './../components/ProgressBar';
@@ -11,6 +12,7 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQue
   const [verbs, setVerbs] = useState([])
   const [currentVerb, setCurrentVerb] = useState(undefined)
   const [input, setInput] = useState("")
+  const [answerSubmitted, setAnswerSubmitted] = useState(false)
 
   const handleGuess = () => {
     const verbWithAnswer = { ...currentVerb, givenAnswer: input, correct: input === currentVerb.answer, completed: true }
@@ -18,11 +20,12 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQue
     setVerbs(newVerbs)
     setCurrentVerb(verbWithAnswer)
 
+    const timeoutLength = verbWithAnswer.correct ? 1000 : 2500
     const animate = setTimeout(() => {
       setCurrentVerb({ ...currentVerb, animateClass: "animate-slide-out" })
-    }, 1000)
-
-    setNextVerb(newVerbs)
+      setAnswerSubmitted(false)
+      setNextVerb(newVerbs)
+    }, timeoutLength)
 
     return () => clearTimeout(animate)
   }
@@ -38,12 +41,11 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQue
         setCurrentVerb(undefined)
         setGameInProgress(false)
       }
-    }, 1500)
+    }, 500)
 
     return () => clearTimeout(next)
   }
 
-  const handleKeyDown = (event) => { if (event.key === 'Enter' && input !== "") handleGuess() }
   const handleInputChange = (event) => { setInput(event.target.value); }
 
   const startGame = () => {
@@ -53,7 +55,7 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQue
       setCurrentVerb({ ...newVerbs[0], animateClass: "animate-slide-in" });
       setGameInProgress(true);
     } else {
-      alert("Foo")
+      alert("Please select at least 1 tense & 1 subject")
     }
   }
 
@@ -63,10 +65,11 @@ function Game({ gameInProgress, setGameInProgress, subjects, tenses, numberOfQue
 
       <ProgressBar verbs={verbs} questionsCount={numberOfQuestions} currentVerb={currentVerb} />
 
+      <AnswerFeedback verb={currentVerb} answerSubmitted={answerSubmitted} />
       <Verb verb={currentVerb} />
 
-      {currentVerb ?
-        <AnswerBox input={input} setInput={setInput} handleInputChange={handleInputChange} handleKeyDown={handleKeyDown} /> :
+      {gameInProgress ?
+        <AnswerBox input={input} setInput={setInput} handleInputChange={handleInputChange} handleGuess={handleGuess} setAnswerSubmitted={setAnswerSubmitted}/> :
         <PostGameReport answers={verbs} />
       }
     </>
