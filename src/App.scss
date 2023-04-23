@@ -30,6 +30,12 @@
   box-shadow: 3px 3px 5px $border-color;
 }
 
+.settings-section p {
+  margin-bottom: 0;
+  margin-top: 0.3rem;
+  color: $red;
+}
+
 .settings-option {
   padding-top: .5rem;
 }
