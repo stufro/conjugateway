@@ -9,7 +9,11 @@ function AnswerBox({ input, setInput, handleInputChange, handleKeyDown }) {
   return (
     <>
       <div className="input-container">
-        <input type="text" ref={inputRef} autoComplete="off" className="answer-box" placeholder="Press Enter to Answer" id="answer" value={input} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+        <input
+          type="text" ref={inputRef} autoComplete="off" autocorrect="off" autocapitalize="off"
+          className="answer-box" placeholder="Press Enter to Answer" id="answer"
+          value={input} onChange={handleInputChange} onKeyDown={handleKeyDown}
+        />
       </div>
 
       <div className="special-character-toolbar">
