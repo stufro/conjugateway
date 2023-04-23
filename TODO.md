@@ -8,3 +8,6 @@
 - [x] don't capitilize first letter on input
 - [x] don't autocorrect on input
 - [x] fix respnosiveness of tense/subject on mobile verb card
+- [ ] exit game midway through
+- [x] show total score at the end
+- [ ] store last used settings in localstorge

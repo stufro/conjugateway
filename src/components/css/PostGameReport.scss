@@ -7,6 +7,14 @@
   gap: 2rem;
 }
 
+.correct-count {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: $primary-color;
+  font-weight: bold;
+  font-size: 2ch;
+}
+
 .answer {
   display: flex;
   flex-wrap: wrap;

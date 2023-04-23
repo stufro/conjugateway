@@ -14,9 +14,7 @@ function Verb({ verb }) {
     if (verb.correct === false) return <FaTimesCircle />;
   }
 
-  if (verb === undefined) {
-    return null;
-  }
+  if (verb === undefined) return null;
 
   return (
     <div className={`overlay-container ${verb.animateClass}`}>
