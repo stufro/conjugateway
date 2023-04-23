@@ -2,6 +2,8 @@
 
 A game to practice your Spanish verbs, written in React.
 
+![Screenshot](screenshot.png)
+
 ## Development
 ```bash
 npm install
